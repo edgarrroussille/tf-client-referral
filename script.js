@@ -4,6 +4,9 @@ function reloadPage() {
 	document.location.reload(true);
 }
 function removeElement(e) {
+let full = window.location.host;
+let sub = full.split('.')[0];
+let enGB = sub === "en" ? true : false;
     let button = e.target;
     let formRow = button.parentElement;
     let contactBlock = formRow.parentElement;
@@ -62,14 +65,14 @@ function addFields(){
     email.setAttribute('data-name', "referredEmail_" + i);
     email.required = true;
     email.setAttribute('class', "text-field required-field w-input");
-    email.placeholder = "Quel est son email ?";
+    email.placeholder = enGB ? "Email" : "Quel est son email ?";
     email.maxLength = "256";
     name.type = "text";
     name.name = "referredFullName_" + i;
     name.id = "referredFullName_" + i;
     name.setAttribute('data-name', "referredFullName_" + i);
     name.setAttribute('class', "text-field w-input");
-    name.placeholder = "Comment s'appelle t'il/elle ?";
+    name.placeholder = enGB ? "Full name" : "Comment s'appelle t'il/elle ?";
     name.maxLength = "256";
     name.required = true;
     company.type = "text";
@@ -77,7 +80,7 @@ function addFields(){
     company.id = "referredCompany_" + i;
     company.setAttribute('data-name', "referredCompany_" + i);
     company.setAttribute('class', "text-field required-field w-input");
-    company.placeholder = "Quelle est son entreprise ?";
+    company.placeholder = enGB ? "Company name" : "Quelle est son entreprise ?";
     company.maxLength = "256";
     company.required = true;
     removeBtn.id = "removeBtn_" + i;
